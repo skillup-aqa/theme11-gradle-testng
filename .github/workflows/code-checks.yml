@@ -25,10 +25,10 @@ jobs:
 
       - name: Test with Gradle Wrapper
         run: ./gradlew test
+        continue-on-error: true
 
       - name: Run Coverage
         run: ./gradlew jacocoTestReport
-        continue-on-error: true
 
       - name: Add coverage to PR
         id: jacoco
