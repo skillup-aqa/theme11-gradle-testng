@@ -19,18 +19,6 @@ test {
     useJUnitPlatform()
 }
 
-jacoco {
-    toolVersion '0.8.12'
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        csv.enabled true
-        html.enabled true
-    }
-}
-
 // DO NOT MODIFY
 jacocoTestCoverageVerification {
     violationRules {
