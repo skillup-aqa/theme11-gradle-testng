@@ -25,3 +25,17 @@ jobs:
 
       - name: Test with Gradle Wrapper
         run: ./gradlew test
+
+      - name: Run Coverage
+        run: ./gradlew jacocoTestReport
+        continue-on-error: true
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.6.1
+        with:
+          paths: |
+            ${{ github.workspace }}/**/build/reports/jacoco/**/jacocoTestReport.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 97
+          min-coverage-changed-files: 97
