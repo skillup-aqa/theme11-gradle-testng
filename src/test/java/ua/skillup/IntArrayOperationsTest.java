@@ -96,8 +96,8 @@ public class IntArrayOperationsTest {
     public void testMergePositive() {
         int[] array1 = {1, 2, 3, 4, 5};
         int[] array2 = {5, 4, 3, 2, 1};
-        int[] merged = {1,2,3,4,5,5,4,3,2,1};
-        assertArrayEquals(IntArrayOperations.merge(array1,array2), merged);
+        int[] merged = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
+        assertArrayEquals(IntArrayOperations.merge(array1, array2), merged);
     }
 
     @Test
@@ -108,8 +108,57 @@ public class IntArrayOperationsTest {
 
     @Test
     public void testBinarySearchDescendingPositive() {
-        int[] array1 = {5,4,3,2,1};
+        int[] array1 = {5, 4, 3, 2, 1};
         assertEquals(IntArrayOperations.binarySearch(array1, 4, false), 1);
     }
+
+    @Test
+    public void testMaxEmpty() {
+        int[] array1 = {};
+        assertEquals(IntArrayOperations.max(array1), 0);
+    }
+
+    @Test
+    public void testMinEmpty() {
+        int[] array1 = {};
+        assertEquals(IntArrayOperations.min(array1), 0);
+    }
+
+    @Test
+    public void testAvgEmpty() {
+        int[] array1 = {};
+        assertEquals(IntArrayOperations.avg(array1), 0);
+    }
+
+    @Test
+    public void testIsSortedWithOneItem() {
+        int[] array1 = {11};
+        assertTrue(IntArrayOperations.isSorted(array1, true));
+    }
+
+    @Test
+    public void testIsSortedFalse() {
+        int[] array1 = {1, 5, 3};
+        assertFalse(IntArrayOperations.isSorted(array1,true));
+    }
+
+    @Test
+    public void testBinarySearchNotsorted() {
+        int[] array1 = {1, 5, 3};
+        assertEquals(IntArrayOperations.binarySearch(array1, 3, true), -1);
+    }
+
+    @Test
+    public void testBinarySearchAbsentValue() {
+        int[] array1 = {1, 5, 7, 9};
+        assertEquals(IntArrayOperations.binarySearch(array1, 3, true), -1);
+    }
+
+    @Test
+    public void testIndexOfAbsentValue() {
+        int[] array1 = {1, 5, 7, 9};
+        assertEquals(IntArrayOperations.indexOf(array1, 15), -1);
+    }
+
 }
 
