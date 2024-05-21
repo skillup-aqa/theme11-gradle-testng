@@ -3,6 +3,7 @@ package ua.skillup;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
+
 public class IntArrayOperationsTest {
     @Test
     public void dummyTest() {
@@ -55,7 +56,7 @@ public class IntArrayOperationsTest {
     @Test
     public void testAvgValue() {
         int[] array1 = {2, 4, 6, 8, 10};
-        assertEquals(IntArrayOperations.avg(array1), 22);
+        assertEquals(IntArrayOperations.avg(array1), 6);
     }
 
     @Test
@@ -72,72 +73,83 @@ public class IntArrayOperationsTest {
     }
 
     @Test
-    public void testCopy(){
+    public void testCopy() {
         int[] array1 = {2, 4, 6, 8, 10};
         int[] copied = IntArrayOperations.copy(array1);
         assertEquals(copied, array1);
     }
+
     @Test
-    public void testIndexOf(){
+    public void testIndexOf() {
         int[] array1 = {2, 4, 6, 8, 10};
-        assertEquals(IntArrayOperations.indexOf(array1, 8), 4);
+        assertEquals(IntArrayOperations.indexOf(array1, 8), 3);
     }
+
     @Test
-    public void testIndexOfAbsent(){
+    public void testIndexOfAbsent() {
         int[] array1 = {2, 4, 6, 8, 10};
         assertEquals(IntArrayOperations.indexOf(array1, 20), -1);
     }
+
     @Test
-    public void testDeleteDuplicates(){
+    public void testDeleteDuplicates() {
         int[] array1 = {2, 4, 6, 8, 10, 2, 4, 6, 8, 10};
         int[] arrayexpected = {2, 4, 6, 8, 10};
         int[] result = IntArrayOperations.removeDuplicates(array1);
         assertEquals(result, arrayexpected);
     }
+
     @Test
-    public void testDeleteDuplicatesEmptyArray(){
+    public void testDeleteDuplicatesEmptyArray() {
         int[] array1 = {};
         int[] arrayexpected = {};
         int[] result = IntArrayOperations.removeDuplicates(array1);
         assertEquals(result, arrayexpected);
     }
+
     @Test
-    public void testIsSortedAsc(){
+    public void testIsSortedAsc() {
         int[] array1 = {2, 4, 6, 8, 10};
-        assertTrue(IntArrayOperations.isSorted(array1,true));
+        assertTrue(IntArrayOperations.isSorted(array1, true));
     }
+
     @Test
-    public void testIsSortedEmptyArray(){
+    public void testIsSortedEmptyArray() {
         int[] array1 = {};
         assertTrue(IntArrayOperations.isSorted(array1, true));
         assertTrue(IntArrayOperations.isSorted(array1, false));
     }
+
     @Test
-    public void testIsSortedDesc(){
+    public void testIsSortedDesc() {
         int[] array1 = {10, 8, 6, 4, 2};
-        assertTrue(IntArrayOperations.isSorted(array1,false));
+        assertTrue(IntArrayOperations.isSorted(array1, false));
     }
+
     @Test
-    public void testIsSortedUnsortedArray(){
+    public void testIsSortedUnsortedArray() {
         int[] array1 = {8, 2, 6, 10, 4};
         assertFalse(IntArrayOperations.isSorted(array1, true));
         assertFalse(IntArrayOperations.isSorted(array1, false));
     }
+
     @Test
-    public void testSortAscending(){
+    public void testSortAscending() {
         int[] array1 = {8, 4, 2, 6, 10};
         int[] arrayexpected = {2, 4, 6, 8, 10};
         int[] result = IntArrayOperations.sort(array1, true);
         assertEquals(result, arrayexpected);
 
     }
+
     @Test
-    public void testSortDescending(){
+    public void testSortDescending() {
         int[] array1 = {8, 4, 2, 6, 10};
         int[] arrayexpected = {10, 8, 6, 4, 2};
         int[] result = IntArrayOperations.sort(array1, false);
         assertEquals(result, arrayexpected);
     }
+
     @Test
     public void testSortEmptyArray() {
         int[] array1 = {};
@@ -145,16 +157,18 @@ public class IntArrayOperationsTest {
         int[] result = IntArrayOperations.sort(array1, true);
         assertEquals(result, arrayexpected);
     }
+
     @Test
-    public void testMarge(){
+    public void testMarge() {
         int[] array1 = {2, 4, 6};
         int[] array2 = {8, 10, 12};
         int[] arrayexpected = {2, 4, 6, 8, 10, 12};
         int[] result = IntArrayOperations.merge(array1, array2);
         assertEquals(result, arrayexpected);
     }
+
     @Test
-    public void testMargeEmptyArrays(){
+    public void testMargeEmptyArrays() {
         int[] array1 = {};
         int[] array2 = {};
         int[] arrayexpected = {};
@@ -162,4 +176,28 @@ public class IntArrayOperationsTest {
         assertEquals(result, arrayexpected);
     }
 
+    @Test
+    public void testBinarySearchAscending() {
+        int[] array1 = {2, 4, 6, 8, 10};
+        assertEquals(IntArrayOperations.binarySearch(array1, 8, true), 3);
+    }
+
+    @Test
+    public void testBinarySearchDescending() {
+        int[] array1 = {10, 8, 6, 4, 2};
+        assertEquals(IntArrayOperations.binarySearch(array1, 8, false), 1);
+    }
+
+    @Test
+    public void testBinarySearchUnsortedArray() {
+        int[] array1 = {8, 4, 10, 2, 6};
+        assertEquals(IntArrayOperations.binarySearch(array1, 4, false), -1);
+    }
+
+    @Test
+    public void testBinarySearchEmptyArray() {
+        int[] array1 = {};
+        assertEquals(IntArrayOperations.binarySearch(array1, 20, true), -1);
+    }
 }
+
