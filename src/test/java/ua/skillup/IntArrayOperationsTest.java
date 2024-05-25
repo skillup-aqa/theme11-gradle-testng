@@ -50,7 +50,8 @@ public class IntArrayOperationsTest {
     public void testCopyPositive() {
         int[] array1 = {1, 2, 3, 4, 56, 7};
         int[] array2 = {1, 2, 3, 4, 56, 7};
-        assertTrue((Arrays.equals(array1, array2)));
+        int[] copiedArray = IntArrayOperations.copy(array1);
+        assertTrue((Arrays.equals(copiedArray, array2)));
     }
 
     @Test
@@ -139,7 +140,7 @@ public class IntArrayOperationsTest {
     @Test
     public void testIsSortedFalse() {
         int[] array1 = {1, 5, 3};
-        assertFalse(IntArrayOperations.isSorted(array1,true));
+        assertFalse(IntArrayOperations.isSorted(array1, true));
     }
 
     @Test
